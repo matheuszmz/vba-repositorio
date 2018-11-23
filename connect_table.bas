@@ -1,3 +1,5 @@
+'Access
+
 'Setando a tabela em uma variável (ORM)
 Dim <var> As DAO.Recordset
 Set <var> = CurrentDb.OpenRecordset("<table>")
