@@ -98,3 +98,24 @@ Public Function VerificarCPF(sCPF As String) As String
     VerificarCPF = False
   End If
 End Function
+
+'Função para corar um novo arquivo de excel automaticamente
+Sub CriaArquivo(mPlan As Worksheet, mPathSave As String)
+  Dim NovoArquivoXLS As Workbook
+  Dim sht As Worksheet
+  'Cria um novo arquivo excel
+  Set NovoArquivoXLS = Application.Workbooks.Add
+  'Copia a planilha para o novo arquivo criado
+  mPlan.Copy Before:=NovoArquivoXLS.Sheets(1)
+  'Salva o arquivo
+  NovoArquivoXLS.SaveAs mPathSave & "\" & mPlan.Name & ".xlsx"
+  MsgBox "Novo arquivo salvo em: " & mPathSave & "\" & mPlan.Name & ".xls", vbInformation
+End Sub
+
+'Função para criar uma aba no excel
+Sub CriaPlanilha(Aba As String)
+  'Cria uma nova aba
+  Sheets.Add After:=Sheets(Sheets.Count)
+  'Altera o nome da aba
+  ActiveSheet.Name = Aba
+End Sub
